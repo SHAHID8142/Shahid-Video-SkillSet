@@ -1,0 +1,13 @@
+# Remotion / video build artifacts (generated inside target projects, not this repo)
+out/
+*.mp4
+*.mov
+*.webm
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local /svs runtime memory (created inside target projects)
+.svs/
