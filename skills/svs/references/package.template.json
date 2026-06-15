@@ -1,0 +1,36 @@
+{
+  "//": "Reference package.json for the video/ Remotion workspace. Merge versions with the latest from `npm create video@latest`.",
+  "name": "video",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render",
+    "render:all": "node render-all.mjs",
+    "still": "remotion still",
+    "upgrade": "remotion upgrade",
+    "benchmark": "remotion benchmark"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@remotion/google-fonts": "^4.0.0",
+    "@remotion/media": "^4.0.0",
+    "@remotion/media-utils": "^4.0.0",
+    "@remotion/player": "^4.0.0",
+    "@remotion/shapes": "^4.0.0",
+    "@remotion/transitions": "^4.0.0",
+    "@remotion/lottie": "^4.0.0",
+    "@remotion/tailwind-v4": "^4.0.0",
+    "remotion": "^4.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "gsap": "^3.12.0",
+    "framer-motion": "^11.0.0",
+    "@studio-freight/lenis": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "playwright": "^1.48.0",
+    "typescript": "^5.6.0"
+  }
+}

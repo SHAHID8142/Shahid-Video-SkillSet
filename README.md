@@ -166,18 +166,23 @@ Shahid-Video-SkillSet/
 ├── README.md              ← you are here
 ├── AGENTS.md              ← supported agents + manual install for any other agent
 ├── CATALOG.md             ← bundled video/animation sub-skills
+├── CHANGELOG.md           ← version history
 ├── install.sh / .ps1      ← interactive multi-agent installers (mark/unmark)
 ├── uninstall.sh / .ps1    ← clean removal
 └── skills/
     └── svs/
         ├── SKILL.md       ← the master Director instruction file (the brain)
         └── references/    ← battle-tested Remotion templates the skill copies
-            ├── remotion.config.template.ts
-            ├── IsolatedProvider.template.tsx
-            ├── useGsapTimeline.template.ts
-            ├── FilmGrade.template.tsx
-            ├── loadFont.template.ts
-            └── capture-app.template.mjs
+            ├── package.template.json          # deps + scripts
+            ├── remotion.config.template.ts     # alias → real ../src, Tailwind
+            ├── SceneExample.template.tsx        # a complete render-safe scene
+            ├── IsolatedProvider.template.tsx    # mock Router/Theme/Store contexts
+            ├── useGsapTimeline.template.ts      # deterministic GSAP
+            ├── FilmGrade.template.tsx           # grade + grain + vignette
+            ├── AnimatedNumber.template.tsx      # data-driven count-ups
+            ├── loadFont.template.ts             # font gating (delayRender)
+            ├── render-all.template.mjs          # multi-format delivery
+            └── capture-app.template.mjs         # non-React Playwright capture
 ```
 
 The skill creates two memory layers at runtime, mirroring `/sps`:

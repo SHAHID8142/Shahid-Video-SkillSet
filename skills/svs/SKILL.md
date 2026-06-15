@@ -194,8 +194,10 @@ pollutes it; in Original Mode the `video/` workspace IS the whole project.
    cd video
    npm i remotion @remotion/cli @remotion/player @remotion/transitions \
          @remotion/google-fonts @remotion/shapes @remotion/media-utils @remotion/lottie \
+         @remotion/media @remotion/captions @remotion/tailwind-v4 \
          gsap framer-motion @studio-freight/lenis
    ```
+   (See `references/package.template.json` for a ready-made dependency set + npm scripts.)
 3. **Wire the visuals:**
    - **🟦 Showcase Mode — bridge the real components.** Use a TS path alias / Vite alias inside the
      Remotion `remotion.config.ts` (via `Config.overrideWebpackConfig`) so the video project can import
@@ -209,9 +211,11 @@ pollutes it; in Original Mode the `video/` workspace IS the whole project.
 5. Verify the studio boots: `npx remotion studio` → confirm `http://localhost:3000` is reachable.
 
 > **Use the bundled templates.** This skill ships proven boilerplate in `references/` (next to this
-> file): `remotion.config.template.ts` (alias + Tailwind), `IsolatedProvider.template.tsx` (mock
+> file): `package.template.json` (deps + scripts), `remotion.config.template.ts` (alias + Tailwind),
+> `SceneExample.template.tsx` (a complete render-safe scene), `IsolatedProvider.template.tsx` (mock
 > contexts), `useGsapTimeline.template.ts` (deterministic GSAP), `FilmGrade.template.tsx` (grade +
-> grain + vignette), `loadFont.template.ts` (font gating), and `capture-app.template.mjs` (non-React
+> grain + vignette), `AnimatedNumber.template.tsx` (data count-ups), `loadFont.template.ts` (font
+> gating), `render-all.template.mjs` (multi-format render), and `capture-app.template.mjs` (non-React
 > Playwright capture). Copy and adapt these instead of hand-writing them — they already obey Step 4.5.
 
 ---
@@ -411,6 +415,40 @@ video/
 
 ---
 
+## STEP 5.5 — 🎯 PRODUCTION HARDENING (multi-format · data · audio · captions)
+
+Real deliverables need more than one good 16:9 cut. Apply these before final render.
+
+**A. Multi-format reframing (don't just letterbox).**
+- Desktop UI does NOT fit 9:16 or 1:1. For each target aspect ratio, **reframe** — don't squish or add
+  black bars. Techniques: punch in on the hero element, stack horizontal layouts vertically, animate a
+  "camera" that pans across a wide component, or crop to the focal region with `objectFit` + transform.
+- Define a **safe area**: keep titles/CTAs within the centre ~80% so nothing is cut on any platform.
+- Register one `<Composition>` per aspect ratio (e.g. `Showcase-16x9`, `Showcase-9x16`, `Showcase-1x1`)
+  sharing scene components but with per-format layout props. Render all via `render-all.template.mjs`.
+
+**B. Data-driven motion.** For metrics/feature videos, animate real numbers, charts, and progress —
+deterministically. Use `AnimatedNumber.template.tsx` (spring count-ups) and `@remotion/shapes` /
+frame-driven SVG for bars, rings, and graphs. Pull real figures from the project or the brief; never
+invent fake stats.
+
+**C. Audio & music licensing (LEGAL SAFETY — treat as a rule).**
+- **NEVER** use copyrighted/commercial music (Spotify rips, popular songs) in a deliverable — it gets
+  videos muted or struck. Use **royalty-free / properly licensed** audio only.
+- Default to clearly-licensed sources and tell the user which you used + the license: e.g. user-supplied
+  tracks, Remotion-safe libraries, or royalty-free catalogs (Pixabay Music, Uppbeat, Artlist/Epidemic
+  with the user's own subscription). When unsure, ask the user to supply the track.
+- Voiceover via TTS (ElevenLabs etc.) must respect that provider's commercial-use terms.
+- Always place audio in `public/`, reference with `staticFile()`, and duck music under voiceover.
+
+**D. Captions & accessibility.**
+- Offer burned-in captions (great for silent autoplay on social) and/or a sidecar `.srt`.
+- Use `@remotion/captions` (or render caption `<Sequence>`s) timed to the voiceover/script. Keep them in
+  the safe area, high-contrast, brand font.
+- Respect `prefers-reduced-motion` intent by offering a calmer alternate cut when asked.
+
+---
+
 ## STEP 6 — RENDER & DELIVERY
 
 Only after the full timeline is approved:
@@ -456,6 +494,10 @@ Only after the full timeline is approved:
 | 15 | **Reduced motion** | A still/low-motion alternative is available if requested |
 | 16 | **Render verified** | Final MP4 actually renders end-to-end without errors |
 | 17 | **Studio isolated** | `video/` workspace did not modify or break the user's app |
+| 18 | **Reframed, not letterboxed** | Each target aspect ratio is purpose-reframed; titles/CTAs inside the safe area |
+| 19 | **Audio licensed** | No copyrighted music; source + license stated (or user-supplied) |
+| 20 | **Real data** | Any animated numbers/stats are real (from project/brief), never invented |
+| 21 | **Captions offered** | Burned-in and/or `.srt` captions available when there's narration/social intent |
 
 If any check fails: fix, then re-run the gate. Never hand over a failing gate.
 

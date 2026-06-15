@@ -100,6 +100,18 @@ decisions from the relevant one.
 
 ---
 
+## 🎯 Production Hardening (real-deliverable robustness)
+
+| Skill | What it does |
+|-------|--------------|
+| **Multi-Format Reframing** | Purpose-reframes one source into 16:9 / 9:16 / 1:1 — punch-ins, vertical stacking, safe areas. No letterboxing/squishing. |
+| **Data-Driven Motion** | Deterministic count-ups, animated charts, rings, and progress from REAL figures. |
+| **Audio Licensing Guard** | Refuses copyrighted music; uses royalty-free/licensed sources and states the license. |
+| **Captions & Accessibility** | Burned-in captions + sidecar `.srt`, safe-area placement, reduced-motion alternates. |
+| **One-Command Delivery** | `render-all` outputs every aspect ratio + poster stills from a single source of truth. |
+
+---
+
 ## 🎨 Brand & Quality
 
 | Skill | What it does |

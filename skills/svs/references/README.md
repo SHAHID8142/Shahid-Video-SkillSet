@@ -11,6 +11,10 @@ consistent. Copy a template into the `video/` workspace and adapt it; don't rein
 | `FilmGrade.template.tsx` | `video/src/grade/FilmGrade.tsx` | Colorist + VFX finish: grade, vignette, deterministic grain, tint |
 | `loadFont.template.ts` | `video/src/loadFont.ts` | Block render until fonts load (`delayRender`/`continueRender`) |
 | `capture-app.template.mjs` | project root | Non-React fallback: Playwright captures of the real running app |
+| `SceneExample.template.tsx` | `video/src/scenes/SceneNN.tsx` | A complete render-safe scene (spring + push-in + grade + exit) to copy and adapt |
+| `AnimatedNumber.template.tsx` | `video/src/ui/AnimatedNumber.tsx` | Deterministic data-driven count-up for metrics videos |
+| `render-all.template.mjs` | `video/render-all.mjs` | One command renders every aspect ratio + poster stills |
+| `package.template.json` | `video/package.json` | Ready-made Remotion dependency set + npm scripts |
 
 All templates obey the Render-Safety laws in `SKILL.md` Step 4.5 (frame-deterministic, clamped,
 async-gated). They ship with the skill, so every agent that installs `/svs` gets them.
