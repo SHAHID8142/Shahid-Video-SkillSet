@@ -89,38 +89,30 @@ The skill bundles instructions for layering **GSAP**, **Framer Motion**, and **L
 
 ## Installation
 
-Works with **Claude Code**, **Antigravity**, and **Gemini CLI** (plus Codex & generic `~/.agents`).
+The installer is **interactive** — it lists every supported agent, pre-checks the ones found on your machine, and lets you **mark/unmark** exactly where to install. Works on Claude Code, Gemini CLI, Antigravity, Codex, OpenCode, Aider, Continue, Cursor, Windsurf, Cline/Roo, and any generic `~/.agents` host. See [`AGENTS.md`](AGENTS.md) for the full list and a manual fallback for **any other agent**.
 
 ### macOS / Linux
 ```bash
 git clone https://github.com/SHAHID8142/Shahid-Video-SkillSet
 cd Shahid-Video-SkillSet
-bash install.sh
+bash install.sh            # interactive picker
+# bash install.sh --detected   # only agents found on this machine
+# bash install.sh --all        # every supported agent
 ```
 
 ### Windows (PowerShell)
 ```powershell
 git clone https://github.com/SHAHID8142/Shahid-Video-SkillSet
 cd Shahid-Video-SkillSet
-./install.ps1
+./install.ps1              # interactive picker  (-Detected / -All also available)
 ```
 
-The installer copies the `svs` skill into every detected agent's global skills directory:
-
-| Agent | Skill path |
-|-------|-----------|
-| Claude Code | `~/.claude/skills/svs/` |
-| Antigravity | `~/.gemini/antigravity/skills/svs/` |
-| Gemini CLI | `~/.gemini/skills/svs/` |
-| Codex | `~/.codex/skills/svs/` |
-| Generic agents | `~/.agents/skills/svs/` |
-
-Restart your agent (or start a new session) and type `/svs` to confirm it loaded.
+In the picker: type numbers to toggle (`1 3 5`), `a` = all, `n` = none, `d` = detected, **ENTER** to install, `q` to quit. Folder-skill agents get `skills/svs/`; Cursor/Windsurf/Cline get a generated rule file. Restart your agent and type `/svs` to confirm.
 
 ### Uninstall
 ```bash
-bash uninstall.sh      # macOS / Linux
-./uninstall.ps1        # Windows
+bash uninstall.sh      # macOS / Linux   (--purge also removes ~/.svs)
+./uninstall.ps1        # Windows         (-Purge also removes ~/.svs)
 ```
 
 ---
@@ -172,12 +164,20 @@ Then follow the director:
 ```
 Shahid-Video-SkillSet/
 ├── README.md              ← you are here
+├── AGENTS.md              ← supported agents + manual install for any other agent
 ├── CATALOG.md             ← bundled video/animation sub-skills
-├── install.sh / .ps1      ← multi-agent global installers
+├── install.sh / .ps1      ← interactive multi-agent installers (mark/unmark)
 ├── uninstall.sh / .ps1    ← clean removal
 └── skills/
     └── svs/
-        └── SKILL.md       ← the master Director instruction file (the brain)
+        ├── SKILL.md       ← the master Director instruction file (the brain)
+        └── references/    ← battle-tested Remotion templates the skill copies
+            ├── remotion.config.template.ts
+            ├── IsolatedProvider.template.tsx
+            ├── useGsapTimeline.template.ts
+            ├── FilmGrade.template.tsx
+            ├── loadFont.template.ts
+            └── capture-app.template.mjs
 ```
 
 The skill creates two memory layers at runtime, mirroring `/sps`:
