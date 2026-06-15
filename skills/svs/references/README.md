@@ -18,3 +18,14 @@ consistent. Copy a template into the `video/` workspace and adapt it; don't rein
 
 All templates obey the Render-Safety laws in `SKILL.md` Step 4.5 (frame-deterministic, clamped,
 async-gated). They ship with the skill, so every agent that installs `/svs` gets them.
+
+## Deep guides (read on demand)
+
+| Guide | When to read |
+|-------|--------------|
+| `cloud-rendering.md` | Long/4K/batch renders, CI, per-customer rendering (Remotion Lambda + GitHub Actions) |
+| `3d-webgl.md` | 3D logos, depth, particles, shaders (Three.js / R3F) with determinism + GL flags |
+| `player-embed.md` | Embedding the live interactive `<Player>` on the user's own site |
+| `troubleshooting.md` | Symptom → cause → fix matrix for motion, assets, imports, render/GPU |
+| `brief.template.md` | Fill-in `./.svs/brief.md` creative brief |
+| `storyboard.template.md` | Fill-in `./.svs/storyboard.md` shot list + approval log |

@@ -3,6 +3,16 @@
 All notable changes to **Shahid Video SkillSet (`/svs`)**.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.3.0] — 2026-06-15
+### Added
+- **Deep reference guides (progressive disclosure)** so the core SKILL stays lean while coverage grows:
+  - `cloud-rendering.md` — Remotion Lambda + GitHub Actions for long/batch/CI/per-customer renders.
+  - `3d-webgl.md` — Three.js / R3F scenes with frame-determinism and GL-backend flags.
+  - `player-embed.md` — embedding the live interactive `<Player>` (autoplay/hover/scroll-scrub).
+  - `troubleshooting.md` — full symptom → cause → fix matrix.
+  - `brief.template.md` + `storyboard.template.md` — concrete `./.svs/` memory files.
+- "Deep References" index in SKILL.md pointing to the above on demand.
+
 ## [1.2.0] — 2026-06-15
 ### Added
 - **Production Hardening (Step 5.5):** multi-format reframing (16:9 / 9:16 / 1:1 without

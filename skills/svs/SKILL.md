@@ -539,6 +539,22 @@ tl.seek(frame / fps); // seek, never play — keeps the render reproducible
 
 ---
 
+## DEEP REFERENCES (read on demand)
+
+The core workflow above stays lean on purpose. When a job needs depth, READ the matching guide in
+`references/` (they ship with the skill) instead of guessing:
+
+| Need | Read |
+|------|------|
+| Long/4K/batch renders, CI, per-customer renders | `references/cloud-rendering.md` (Lambda + GitHub Actions) |
+| 3D logos, depth, particles, shader backgrounds | `references/3d-webgl.md` (Three.js / R3F, determinism, GL flags) |
+| Live interactive video on the user's own site | `references/player-embed.md` (`<Player>`, autoplay, scroll-scrub) |
+| Anything broken, flickering, or failing to render | `references/troubleshooting.md` (symptom → fix matrix) |
+| Concrete `./.svs/` memory files to fill in | `references/brief.template.md`, `references/storyboard.template.md` |
+| Render-safe code to copy (config, scene, motion, finish) | the `*.template.*` files (see Step 2) |
+
+---
+
 ## DEPENDENCY — `/sps`
 
 `/svs` is the Director; `/sps` is the craft engine. `/svs` **requires `/sps`** for all design and
